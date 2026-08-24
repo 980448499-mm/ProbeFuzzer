@@ -1,0 +1,12 @@
+.env
+.idea
+__pycache__
+bin
+lib
+lib64
+pyvenv.cfg
+log
+*.log
+savedFSM.json
+savedFSM_sm.json
+UERANSIM_CoreTesting/

@@ -1,0 +1,73 @@
+{
+  "cycle": 96,
+  "elapsed_seconds": 43443.38,
+  "confusion": {
+    "rejection": {
+      "G2a": 96
+    },
+    "hang": {
+      "G3": 1920
+    },
+    "packet_loss": {
+      "G4": 1920
+    },
+    "transient": {
+      "G2b": 96
+    },
+    "crash": {
+      "G1": 96
+    }
+  },
+  "metrics": {
+    "total_trials": 4128,
+    "correct": 4128,
+    "accuracy": 1.0,
+    "fpr": 0.0,
+    "fpr_n": 4032,
+    "recall": 1.0,
+    "recall_n": 96,
+    "per_class": {
+      "G1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n": 96,
+        "truth": 96,
+        "correct": 96
+      },
+      "G2a": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n": 96,
+        "truth": 96,
+        "correct": 96
+      },
+      "G2b": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n": 96,
+        "truth": 96,
+        "correct": 96
+      },
+      "G3": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n": 1920,
+        "truth": 1920,
+        "correct": 1920
+      },
+      "G4": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n": 1920,
+        "truth": 1920,
+        "correct": 1920
+      }
+    }
+  },
+  "n_results": 4128
+}

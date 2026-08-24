@@ -1,0 +1,17 @@
+name: open5gs
+deployment: native
+processes:
+  amf: open5gs-amfd
+  smf: open5gs-smfd
+  upf: open5gs-upfd
+amf_ngap_host: 127.0.0.5
+amf_ngap_port: 38412
+log_paths:
+  core: logs/core.log
+start_cmd: ["5gc", "-c", "{OPEN5GS_PATH}/build/configs/sample.yaml"]
+kill_cmd: ["pkill", "-2", "-f", "5gc"]
+fsm_path: fsms/open5gs.dot
+fsm_sm_path: fsms/open5gs_sm.dot
+mongodb_cleanup: true
+ue_config: open5gs-ue.yaml
+gnb_config: open5gs-gnb.yaml

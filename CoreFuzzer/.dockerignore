@@ -1,0 +1,12 @@
+# 排除本地构建产物，避免 COPY 进 Docker 镜像（Dockerfile 内会 rm -rf build 重新构建）
+open5gs/build/
+open5gs/install/
+open5gs/.git/
+UERANSIM_CoreTesting/build/
+UERANSIM_CoreTesting/cmake-build-release/
+.venv/
+__pycache__/
+*.pyc
+logs/
+crash_reports*/
+findings/

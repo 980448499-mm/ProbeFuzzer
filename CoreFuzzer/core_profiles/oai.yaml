@@ -1,0 +1,18 @@
+name: oai
+deployment: docker
+processes:
+  amf: fuzzing-oai-amf
+  smf: fuzzing-oai-smf
+  upf: fuzzing-oai-upf
+amf_ngap_host: 172.25.0.20
+amf_ngap_port: 38412
+log_paths:
+  core: logs/oai-amf.log
+start_cmd: ["docker", "start", "fuzzing-oai-amf"]
+kill_cmd: ["docker", "kill", "fuzzing-oai-amf"]
+fsm_path: fsms/open5gs.dot
+fsm_sm_path: fsms/open5gs_sm.dot
+mongodb_cleanup: false
+ue_config: oai-ue.yaml
+gnb_config: oai-gnb.yaml
+ue_port: 45680

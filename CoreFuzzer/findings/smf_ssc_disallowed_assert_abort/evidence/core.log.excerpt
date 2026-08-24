@@ -1,0 +1,33 @@
+# Campaign crash 2026-08-17 04:37:26 (iface iter 38 pad_n1)
+
+08/17 04:37:26.525: [smf] WARNING: OLD Session Will Release [SUPI:imsi-999700000000001,PDU Session identity:5] (../src/smf/context.c:1498)
+08/17 04:37:26.525: [smf] INFO: Removed Session: UE IMSI:[imsi-999700000000001] DNN:[internet:5] IPv4:[10.45.0.13] IPv6:[] (../src/smf/context.c:1663)
+08/17 04:37:26.525: [smf] INFO: [Removed] Number of SMF-Sessions is now 0 (../src/smf/context.c:3065)
+08/17 04:37:26.525: [smf] INFO: [Added] Number of SMF-Sessions is now 1 (../src/smf/context.c:3057)
+08/17 04:37:26.530: [smf] ERROR: SSCMode is not allowed (../src/smf/nudm-handler.c:170)
+08/17 04:37:26.530: [smf] ERROR: No Arp.preempt_cap (../src/smf/npcf-build.c:157)
+08/17 04:37:26.530: [sbi] ERROR: SBI build failed (../lib/sbi/context.c:1779)
+08/17 04:37:26.530: [smf] ERROR: smf_sbi_discover_and_send() failed (../src/smf/sbi-path.c:113)
+08/17 04:37:26.530: [sbi] ERROR: stream has already been removed (../lib/sbi/nghttp2-server.c:565)
+08/17 04:37:26.530: [smf] ERROR: smf_nudm_sdm_handle_get: Expectation `r == OGS_OK' failed. (../src/smf/nudm-handler.c:365)
+08/17 04:37:26.530: [smf] FATAL: smf_nudm_sdm_handle_get: Assertion `r != OGS_ERROR' failed. (../src/smf/nudm-handler.c:366)
+08/17 04:37:26.531: [core] FATAL: backtrace() returned 10 addresses (../lib/core/ogs-abort.c:37)
+/corefuzzer_deps/open5gs/build/src/smf/open5gs-smfd(+0x9ceed) [0x5e903fc00eed]
+/corefuzzer_deps/open5gs/build/src/smf/open5gs-smfd(+0x3c2e4) [0x5e903fba02e4]
+
+# Independent repro 2026-08-17 04:39:40 (SSC mode 7)
+
+08/17 04:39:40.804: [smf] ERROR: [imsi-999700000000001:5] HTTP response error [400] (../src/smf/namf-handler.c:42)
+08/17 04:39:40.804: [smf] WARNING: OLD Session Will Release [SUPI:imsi-999700000000001,PDU Session identity:5] (../src/smf/context.c:1498)
+08/17 04:39:40.804: [smf] INFO: Removed Session: UE IMSI:[imsi-999700000000001] DNN:[internet:5] IPv4:[10.45.0.2] IPv6:[] (../src/smf/context.c:1663)
+08/17 04:39:40.804: [smf] INFO: [Removed] Number of SMF-Sessions is now 0 (../src/smf/context.c:3065)
+08/17 04:39:40.804: [smf] INFO: [Added] Number of SMF-Sessions is now 1 (../src/smf/context.c:3057)
+08/17 04:39:40.808: [smf] ERROR: SSCMode is not allowed (../src/smf/nudm-handler.c:170)
+08/17 04:39:40.809: [smf] ERROR: No Arp.preempt_cap (../src/smf/npcf-build.c:157)
+08/17 04:39:40.809: [sbi] ERROR: SBI build failed (../lib/sbi/context.c:1779)
+08/17 04:39:40.809: [smf] ERROR: smf_sbi_discover_and_send() failed (../src/smf/sbi-path.c:113)
+08/17 04:39:40.809: [sbi] ERROR: stream has already been removed (../lib/sbi/nghttp2-server.c:565)
+08/17 04:39:40.809: [smf] ERROR: smf_nudm_sdm_handle_get: Expectation `r == OGS_OK' failed. (../src/smf/nudm-handler.c:365)
+08/17 04:39:40.809: [smf] FATAL: smf_nudm_sdm_handle_get: Assertion `r != OGS_ERROR' failed. (../src/smf/nudm-handler.c:366)
+08/17 04:39:40.809: [core] FATAL: backtrace() returned 10 addresses (../lib/core/ogs-abort.c:37)
+/corefuzzer_deps/open5gs/build/src/smf/open5gs-smfd(+0x9ceed) [0x5c36203c2eed]

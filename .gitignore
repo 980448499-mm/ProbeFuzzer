@@ -1,0 +1,42 @@
+# ---- 第三方 Open5GS（顶层 + CoreFuzzer 内嵌套）----
+open5gs/
+**/open5gs/
+
+# ---- 日志 / crash reports / 运行数据 ----
+*.log
+logs/
+campaign_runs/
+crash_reports*/
+savedFSM*.json
+savedFSM*.bak*
+
+# ---- 数据导出 / 图片 / 归档 / 抓包 ----
+*.csv
+*.xlsx
+*.png
+*.zip
+*.pcap
+*.bin
+*.raw
+*.elf
+*.tif
+*.jpg
+*.mp4
+
+# ---- 统计/中间 JSON 数据 ----
+*_statistics.json
+*_estimate.json
+*_transitions.json
+*_list.json
+
+# ---- Python 缓存 ----
+__pycache__/
+*.pyc
+*.pyo
+
+# ---- IDE / 编辑器 / 系统 ----
+.idea/
+.cursor/
+.vscode/
+.free5gc-recovery/
+.DS_Store

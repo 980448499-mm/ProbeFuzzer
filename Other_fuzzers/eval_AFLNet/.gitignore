@@ -1,0 +1,15 @@
+.env
+.idea
+__pycache__
+bin
+lib
+lib64
+pyvenv.cfg
+log
+kill_*.sh
+*.log
+run.pid
+savedFSM.json*
+
+# Evaluation
+eval/out/

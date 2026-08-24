@@ -1,0 +1,82 @@
+{
+  "id": "SMF-SSC-DISALLOWED-ASSERT-ABORT",
+  "title": "Open5GS SMF aborts on disallowed 5GSM SSC mode when DNN is present in SmContextCreateData",
+  "status": "confirmed",
+  "is_confirmed": true,
+  "classification": {
+    "cwe": "CWE-617",
+    "kind": "reachable_assertion",
+    "impact": "smf_process_abort_dos",
+    "phi_protocol_violation": false,
+    "rce": false,
+    "memory_corruption": false
+  },
+  "target": {
+    "project": "Open5GS",
+    "component": "open5gs-smfd",
+    "version_in_tree": "2.6.6",
+    "source_root": "open5gs/",
+    "sbi": "http://127.0.0.4:7777/nsmf-pdusession/v1/sm-contexts"
+  },
+  "trigger": {
+    "interface": "N11",
+    "http_method": "POST",
+    "content_type": "multipart/related",
+    "json_required_fields": {
+      "supi": "imsi-999700000000001",
+      "pduSessionId": 5,
+      "dnn": "internet",
+      "sNssai": {"sst": 1}
+    },
+    "n1_5gsm_valid_hex": "2e0501c1ffff91a1",
+    "n1_5gsm_crash_hex": "2e0501c1ffff91a7",
+    "n1_diff": "last octet SSC mode IE value 1 -> 7",
+    "poc_files": [
+      "poc/n1_pdu_est_ssc1.bin",
+      "poc/n1_pdu_est_ssc7.bin"
+    ]
+  },
+  "observed": {
+    "campaign": {
+      "log": "CoreFuzzer/logs/iface_campaign_40_20260817_043702.log",
+      "csv_row": "38,sbi,pad_n1,/sm-contexts,n1_inplace,0,0,,open5gs-smfd,,1,",
+      "http": 0,
+      "dead": "open5gs-smfd",
+      "timestamp": "2026-08-17T04:37:26"
+    },
+    "independent_repro": {
+      "timestamp": "2026-08-17T04:39:40",
+      "valid_create_http": 201,
+      "crash_create_http": 0,
+      "curl_error": "curl: (92) HTTP/2 stream 1 was not closed cleanly before end of the underlying stream",
+      "smf_pids_before": [1477],
+      "smf_pids_after": []
+    },
+    "fatal": "smf_nudm_sdm_handle_get: Assertion `r != OGS_ERROR' failed. (../src/smf/nudm-handler.c:366)"
+  },
+  "root_cause": {
+    "summary": "Disallowed SSC mode skips QoS/ARP copy via continue, but pre-set sess->session.name from JSON DNN bypasses the only error gate; SMF sends HTTP 201 then asserts on PCF build failure.",
+    "files": [
+      {"path": "open5gs/src/smf/nsmf-handler.c", "lines": "259-262", "role": "copies dnn into sess->session.name"},
+      {"path": "open5gs/src/smf/gsm-handler.c", "lines": "59-61", "role": "sets sess->ue_ssc_mode from N1"},
+      {"path": "open5gs/src/smf/nudm-handler.c", "lines": "169-172", "role": "SSCMode is not allowed; continue without ARP"},
+      {"path": "open5gs/src/smf/nudm-handler.c", "lines": "303-308", "role": "success gated only on session.name"},
+      {"path": "open5gs/src/smf/nudm-handler.c", "lines": "353-366", "role": "HTTP 201 then ogs_assert on PCF discover"},
+      {"path": "open5gs/src/smf/npcf-build.c", "lines": "157-158", "role": "No Arp.preempt_cap; build returns NULL"}
+    ]
+  },
+  "expected_spec": {
+    "3gpp": ["TS 24.501", "TS 29.502"],
+    "5gsm_cause": 68,
+    "5gsm_cause_name": "Not supported SSC mode",
+    "n11": "HTTP error, not 201, process must stay up"
+  },
+  "upstream": {
+    "fixed": true,
+    "pr": "https://github.com/open5gs/open5gs/pull/3408",
+    "commit": "https://github.com/open5gs/open5gs/commit/8b955328e7a215c361bc2c288e7b7ff9d23c1653",
+    "note": "Reject with NOT_SUPPORTED_SSC_MODE / SSC_DENIED before Created + PCF. This tree (2.6.6) lacks that check."
+  },
+  "reproduce": "python3 findings/smf_ssc_disallowed_assert_abort/reproduce.py",
+  "evidence": "evidence/core.log.excerpt"
+}

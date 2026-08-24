@@ -1,0 +1,50 @@
+[
+  {
+    "iteration": "52",
+    "state": "s9",
+    "send_type": "registrationRequest",
+    "ret_type": "authenticationRequest",
+    "sht": "1",
+    "secmod": "2",
+    "wire_sht": 1,
+    "wire_secmod": 2,
+    "byte_mut": "0",
+    "new_msg": "7E0106406DD4017E004179000D0199F9070000000000000000742E04F0F0F0F071002C60260D3783DB46EE9BED423226421E035A92514176B26DC1584B85F776131ABD77FA33D5FA45FFBF5B931A40",
+    "ret_msg": "7E00560102000021276A58525A8C17E3BF20B6373D133BB92010F94367BC3F62800072C7437A84B48E9B",
+    "open5gs_ret": "null_action",
+    "free5gc_ret": "NOT_AVAILABLE",
+    "wire_phi_on_replay": false,
+    "confirmed_pv": false,
+    "reason": "open5gs_normal_or_no_send",
+    "meta": {
+      "wire_sht": 1,
+      "reported_sht": 1,
+      "reported_secmod": 2,
+      "used_wire_sht": true
+    }
+  },
+  {
+    "iteration": "131",
+    "state": "s6",
+    "send_type": "identityResponse",
+    "ret_type": "authenticationRequest",
+    "sht": "0",
+    "secmod": "1",
+    "wire_sht": 0,
+    "wire_secmod": 1,
+    "byte_mut": "0",
+    "new_msg": "7E005C000D0199F907000000000000000055",
+    "ret_msg": "7E00560002000021C26FB542508688CCF6458FBEACCAEFA4201002D65411D00D80002EC7480E3887FF2C",
+    "open5gs_ret": "HANDSHAKE_FAIL:",
+    "free5gc_ret": "NOT_AVAILABLE",
+    "wire_phi_on_replay": false,
+    "confirmed_pv": false,
+    "reason": "open5gs_replay_failed",
+    "meta": {
+      "wire_sht": 0,
+      "reported_sht": 0,
+      "reported_secmod": 1,
+      "used_wire_sht": true
+    }
+  }
+]

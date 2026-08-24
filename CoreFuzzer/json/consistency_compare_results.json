@@ -1,0 +1,42 @@
+[
+  {
+    "iteration": "52",
+    "send_type": "registrationRequest",
+    "orig_ret": "authenticationRequest",
+    "wire_sht": 1,
+    "wire_secmod": 2,
+    "open5gs_ret": "null_action",
+    "free5gc_ret": "null_action",
+    "confirmed_inconsistency": false,
+    "confirmed_pv": false,
+    "clause_note": "TS24.501: 初始注册通常期望明文Registration Request(SHT=0)；SHT=1需核查是否不当接受完整性保护初始NAS",
+    "meta": {
+      "wire_sht": 1,
+      "reported_sht": 1,
+      "reported_secmod": 2,
+      "used_wire_sht": true
+    },
+    "open5gs_wire_phi": false,
+    "free5gc_wire_phi": false
+  },
+  {
+    "iteration": "131",
+    "send_type": "identityResponse",
+    "orig_ret": "authenticationRequest",
+    "wire_sht": 0,
+    "wire_secmod": 1,
+    "open5gs_ret": "HANDSHAKE_FAIL:",
+    "free5gc_ret": "HANDSHAKE_FAIL:registrationReject",
+    "confirmed_inconsistency": false,
+    "confirmed_pv": false,
+    "clause_note": "TS24.501: identityResponse后进入鉴权流程通常合法；需结合当前MM状态判定",
+    "meta": {
+      "wire_sht": 0,
+      "reported_sht": 0,
+      "reported_secmod": 1,
+      "used_wire_sht": true
+    },
+    "open5gs_wire_phi": false,
+    "free5gc_wire_phi": false
+  }
+]

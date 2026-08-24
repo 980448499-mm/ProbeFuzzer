@@ -1,0 +1,6 @@
+python-dotenv
+pymongo
+psutil
+torch
+numpy
+pyyaml

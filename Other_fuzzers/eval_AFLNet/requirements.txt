@@ -1,0 +1,4 @@
+python-dotenv
+pymongo
+psutil ~= 5.9.8
+tqdm ~= 4.66.1

@@ -1,0 +1,20 @@
+name: free5gc
+deployment: docker
+processes:
+  amf: fuzzing-free5gc-amf
+  smf: fuzzing-free5gc-smf
+  nrf: fuzzing-free5gc-nrf
+  upf: fuzzing-free5gc-upf
+amf_ngap_host: 172.24.0.20
+amf_ngap_port: 38412
+log_paths:
+  core: logs/free5gc-amf.log
+start_cmd: ["docker", "start", "fuzzing-free5gc-amf"]
+kill_cmd: ["docker", "kill", "fuzzing-free5gc-amf"]
+fsm_path: fsms/open5gs.dot
+fsm_sm_path: fsms/open5gs_sm.dot
+mongodb_cleanup: false
+ue_config: free5gc-ue.yaml
+gnb_config: free5gc-gnb.yaml
+ue_port: 45679
+imsi_base: 208930000000001
